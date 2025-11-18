@@ -16,9 +16,9 @@ jobs:
         run: apt update
       - name: Setup Node
         run: |
-          apt install npm
-          npm install
+          sudo apt install npm
+          sudo npm install
       - name: Make zip
         run: |
-          apt install zip
+          sudo apt install zip
           zip -r app.zip . -x "*.git*" -x "*.github*" -x "node_modules/.cache/*"
