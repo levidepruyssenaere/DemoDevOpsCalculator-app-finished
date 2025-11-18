@@ -12,10 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5.0.1
-      - name: Update Packages
-        run: apt update
       - name: Setup Node
         run: |
+          sudo apt install node
           sudo npm install
       - name: Make zip
         run: |
