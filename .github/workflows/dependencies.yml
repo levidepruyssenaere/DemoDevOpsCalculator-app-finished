@@ -16,7 +16,6 @@ jobs:
         run: apt update
       - name: Setup Node
         run: |
-          sudo apt install npm
           sudo npm install
       - name: Make zip
         run: |
