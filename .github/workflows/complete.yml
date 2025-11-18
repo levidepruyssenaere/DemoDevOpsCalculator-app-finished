@@ -1,4 +1,4 @@
-name: Dependencies Example
+name: Build Example
 
 on:
   push:
@@ -12,12 +12,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5.0.1
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-            node-version: '20'
-      - name: Install Packages
+          node-version: '20'
+
+      - name: Install packages
         run: npm install
-            
-      - name: Make zip
-        run: zip -r app.zip . -x "*.git*" -x "*.github*" -x "node_modules/.cache/*"
+
+      - name: Run unit tests
+        run: npm test
+
+      - name: Make zip bundle
+        run: zip -r app_bundle.zip . \
+          -x "*.git*" \
+          -x "*.github*" \
+          -x "node_modules/.cache/*"
