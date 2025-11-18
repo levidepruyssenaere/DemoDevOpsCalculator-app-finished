@@ -12,11 +12,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5.0.1
-      - name: Setup Node
-        run: |
-          sudo apt install node
-          sudo npm install
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+            node-version: '20'
+      - name: Install Packages
+        run: npm install
+            
       - name: Make zip
-        run: |
-          sudo apt install zip
-          zip -r app.zip . -x "*.git*" -x "*.github*" -x "node_modules/.cache/*"
+        run: zip -r app.zip . -x "*.git*" -x "*.github*" -x "node_modules/.cache/*"
